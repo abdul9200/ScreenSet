@@ -19,11 +19,11 @@ public class FileController {
     public File addFile(File file){
         return fileService.addFile(file);
     }
-    @PutMapping(path = "/update")
+    @PutMapping(path = "/update/{id}")
     public File updateFile(File file){
         return fileService.updateFile(file);
     }
-    @DeleteMapping
+    @DeleteMapping(path = "/{id}")
     public void removeFile(File file){
          fileService.removeFile(file);
     }

@@ -18,11 +18,11 @@ public class ScreenController {
 
         return screenService.addScreen(screen);
     }
-    @PutMapping(path = "/update")
+    @PutMapping(path = "/update/{Id}")
     public Screen updateScreen(Screen screen){
         return screenService.updateScreen(screen);
     }
-    @DeleteMapping
+    @DeleteMapping(path="/{id}")
     public void removeScreen(Screen screen){
         screenService.removeScreen(screen);
     }

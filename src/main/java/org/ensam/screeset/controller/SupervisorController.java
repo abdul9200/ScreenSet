@@ -20,11 +20,11 @@ public class SupervisorController {
 
         return supervisorService.addSupervisor(supervisor);
     }
-    @PutMapping(path = "/update")
+    @PutMapping(path = "/update/{id}")
     public Supervisor updateSupervisor(Supervisor supervisor){
         return supervisorService.updateSupervisor(supervisor);
     }
-    @DeleteMapping
+    @DeleteMapping(path = "/{id}")
     public void removeSupervisor(Supervisor supervisor){
         supervisorService.removeSupervisor(supervisor);
     }
