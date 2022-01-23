@@ -1,5 +1,7 @@
 package org.ensam.screeset.Entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -19,7 +21,7 @@ public class Supervisor {
 	private String prenom;
 	private String mail;
 	@OneToMany(mappedBy="supervisor",cascade = CascadeType.ALL)
-	private Set<Screen> screens;
+	private Collection<Screen> screens = new ArrayList<>();
 
 
 }

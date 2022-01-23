@@ -8,5 +8,7 @@ public interface SupervisorService {
     Supervisor addSupervisor(Supervisor supervisor);
     void removeSupervisor(Supervisor supervisor);
     Supervisor updateSupervisor(Supervisor supervisor);
+    Supervisor getSupervisorById(long id);
+    Supervisor addScreenToSupervisor(long idSupervisor, long idScreen);
     List<Supervisor> listSupervisor();
 }

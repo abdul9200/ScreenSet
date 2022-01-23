@@ -2,6 +2,7 @@ package org.ensam.screeset.Entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class File {
 	private Long duration;
 	@ManyToOne
 	@JoinColumn(name="screenId")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Screen screen;
 	
 

@@ -20,15 +20,19 @@ public class SupervisorController {
 
         return supervisorService.addSupervisor(supervisor);
     }
-    @PutMapping(path = "/update/{id}")
-    public Supervisor updateSupervisor(Supervisor supervisor){
+    @PutMapping(path = "/addScreenToSupervisor")
+    public Supervisor addScreenToSupervisor(@RequestParam(name = "idSupervisor")long idSupervisor, @RequestParam(name = "idScreen")long idScreen){
+        return supervisorService.addScreenToSupervisor(idSupervisor, idScreen);
+    }
+    @PutMapping(path = "/update")
+    public Supervisor updateSupervisor(@RequestBody Supervisor supervisor){
         return supervisorService.updateSupervisor(supervisor);
     }
-    @DeleteMapping(path = "/{id}")
-    public void removeSupervisor(Supervisor supervisor){
-        supervisorService.removeSupervisor(supervisor);
+    @DeleteMapping(path = "/remove/{id}")
+    public void removeSupervisor(@PathVariable(name = "id") long id){
+        supervisorService.removeSupervisor(supervisorService.getSupervisorById(id));
     }
-    @GetMapping(path="/")
+    @GetMapping(path="/listSupervisor")
     public List<Supervisor> listSupervisor(){
         return supervisorService.listSupervisor();
     }

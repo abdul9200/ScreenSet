@@ -1,10 +1,10 @@
 package org.ensam.screeset.Entity;
 
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,9 +25,10 @@ public class Screen {
 	private String etat;
 	@ManyToOne
 	@JoinColumn(name="supervisorId")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Supervisor supervisor;
 	@OneToMany(mappedBy="screen",cascade = CascadeType.ALL)
-	private Set<File> files;
+	private Collection<File> files=new ArrayList<>();
 	
 	
 	
