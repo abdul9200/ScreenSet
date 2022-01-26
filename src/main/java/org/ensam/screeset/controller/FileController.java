@@ -16,18 +16,18 @@ public class FileController {
     }
 
     @PostMapping(path = "/add")
-    public File addFile(File file){
+    public File addFile(@RequestBody File file){
         return fileService.addFile(file);
     }
     @PutMapping(path = "/update")
-    public File updateFile(File file){
+    public File updateFile(@RequestBody File file){
         return fileService.updateFile(file);
     }
-    @DeleteMapping
-    public void removeFile(File file){
-         fileService.removeFile(file);
+    @DeleteMapping(path = "/remove/{id}")
+    public void removeFile(@PathVariable(name="id")long id){
+         fileService.removeFile(fileService.getFileById(id));
     }
-    @GetMapping(path="/")
+    @GetMapping(path="/listFile")
     public List<File> listFile(){
         return fileService.listFile();
     }

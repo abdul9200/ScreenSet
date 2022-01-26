@@ -32,6 +32,11 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
+	public File getFileById(long id) {
+		return rep.findById(id).get();
+	}
+
+	@Override
 	public List<File> listFile() {
 		return rep.findAll();
 	}

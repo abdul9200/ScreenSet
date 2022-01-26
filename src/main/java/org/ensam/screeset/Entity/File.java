@@ -1,10 +1,8 @@
 package org.ensam.screeset.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +18,9 @@ public class File {
 	private String name;
 	private String path;
 	private Long duration;
+	@ManyToOne
+	@JoinColumn(name="screenId")
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private Screen screen;
 	
 

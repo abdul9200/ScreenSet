@@ -8,5 +8,6 @@ public interface FileService {
 	File addFile(File file);
 	void removeFile(File file);
 	File updateFile(File file);
+	File getFileById(long id);
 	List<File> listFile();
 }

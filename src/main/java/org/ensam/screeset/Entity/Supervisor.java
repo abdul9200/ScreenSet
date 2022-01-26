@@ -1,12 +1,10 @@
 package org.ensam.screeset.Entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +20,8 @@ public class Supervisor {
 	private String nom;
 	private String prenom;
 	private String mail;
-	@OneToMany(mappedBy="supervisor")
-	private Set<Screen> screens;
+	@OneToMany(mappedBy="supervisor",cascade = CascadeType.ALL)
+	private Collection<Screen> screens = new ArrayList<>();
+
 
 }
