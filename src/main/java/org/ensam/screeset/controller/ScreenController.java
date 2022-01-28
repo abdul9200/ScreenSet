@@ -1,7 +1,11 @@
 package org.ensam.screeset.controller;
 
 import org.ensam.screeset.Entity.Screen;
+import org.ensam.screeset.dto.DataScreenRequestDTO;
 import org.ensam.screeset.service.ScreenService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,6 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/screen")
 public class ScreenController {
+    @Autowired
+    private ModelMapper modelMapper;
     private ScreenService screenService;
     public ScreenController(ScreenService screenService){
         this.screenService=screenService;
@@ -25,6 +31,13 @@ public class ScreenController {
     @PutMapping(path = "/update")
     public Screen updateScreen(@RequestBody Screen screen){
         return screenService.updateScreen(screen);
+    }
+    @PutMapping(path="/heartbeat")
+    public ResponseEntity<DataScreenRequestDTO> updateScreen (@RequestBody DataScreenRequestDTO dataScreenRequestDTO){
+        Screen screenRequest=modelMapper.map(dataScreenRequestDTO,Screen.class);
+        Screen screen = screenService.updateScreen(screenRequest);
+        DataScreenRequestDTO screenReponse=modelMapper.map(screen ,DataScreenRequestDTO.class);
+        return ResponseEntity.ok().body(screenReponse);
     }
     @DeleteMapping(path="/remove/{id}")
     public void removeScreen(@PathVariable(name ="id") long id){
